@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		<title>Kaddosh</title>
+		<!-- Mobile Meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link href="css/style.css" rel="stylesheet"> 
+	</head>
+
+	<body>
+
+		<!-- header start --> 
+		<header>
+	<!-- NAVIGATION -->
+	<div id="navigation">
+			
+				<!-- menu nav -->
+				<div class="menu-nav">
+					
+					<ul class="menu-list">
+
+ <li id="float-left-on-navbar">
+  <div>
+
+<ul class="brands">
+  <li class="brands__item">
+    <a href="#">
+      <img src="images/logo.png" alt="" />
+      <span  id="first-nav-brand">Kaddosh restuarant</span> 
+    </a>
+  </li>
+</ul>
+        </div>
+    </li>
+
+
+
+						<li><a href="index.html">Home</a></li>
+						<li><a href="about.html">About us</a></li>
+						<li class="active"><a href="services.html">Services</a></li>
+						<li><a href="gallery.html">Gallery</a></li>
+						<li><a href="contact.html">Contact us</a></li>
+						
+
+          </ul>
+
+	
+
+
+				</div>
+				<!-- menu nav -->
+	</div>
+	<!-- / NAVIGATION -->
+		
+
+		</header>
+		<!-- header end -->
+
+	<br/>
+<section id="middle-section">
+	                    <div class="space"></div>
+						<h1>Our services</h1>
+
+
+
+            <div class="row">
+            <div class="col-12">
+                
+                <div >
+            <p class="lead-p" style="text-align: center;">FIRST CLASS SERVICES.</p>
+                  <ul class="list-unstyled lead-p" style="list-style-type: none;">
+                  <li><i class="fa fa-arrow-circle-right pr-10 colored"></i>Kadosh restaurants, regardless of if they are fast food, casual dining or fine dining, offers some amount of various foodstuffs (might have varying degrees of quality) for a price you agree to pay, in trade for you taking the time to prepare, cook and serve the food for yourself at home.</li>
+                  <li><i class="fa fa-arrow-circle-right pr-10 colored"></i> Kadosh restaurants will also take this a step further and provide you with a sitting/dining area where you can partake your meal, and will offer a variety of servers, bussers, and cleaning staff to further limit what you have to do for yourself.</li>
+
+                  <li><i class="fa fa-arrow-circle-right pr-10 colored"></i> 
+Sometimes, good customer service simply means being available. Customers who can see managers, hosts and wait staff are more likely to give employees the opportunity to provide good customer service by making requests. Many diners are hesitant to actually walk into the bar or to the counter to ask for something, and a customer should never have to shout into the kitchen. Just by being visible, you make customers feel they are having a better experience because they know if they need something, you're right there, available to help..</li>
+
+                  
+                </ul>
+         
+              </div>
+
+                    </div>
+                  </div>
+
+              <div class="row">
+      
+              <div class="col-12">
+                <h2 id="services-h2" style="text-align: center;">Plan your order</h2>
+    <div class="calculator" style="text-align: center;">
+
+  <input type="text" class="calculator-screen" value="" disabled />
+  
+  <div class="calculator-keys">
+    
+    <button type="button" class="operator" value="+">+</button>
+    <button type="button" class="operator" value="-">-</button>
+    <button type="button" class="operator" value="*">&times;</button>
+    <button type="button" class="operator" value="/">&divide;</button>
+
+    <button type="button" value="7">7</button>
+    <button type="button" value="8">8</button>
+    <button type="button" value="9">9</button>
+
+
+    <button type="button" value="4">4</button>
+    <button type="button" value="5">5</button>
+    <button type="button" value="6">6</button>
+
+
+    <button type="button" value="1">1</button>
+    <button type="button" value="2">2</button>
+    <button type="button" value="3">3</button>
+
+
+    <button type="button" value="0">0</button>
+    <button type="button" class="decimal" value=".">.</button>
+    <button type="button" class="all-clear" value="all-clear">AC</button>
+
+    <button type="button" class="equal-sign operator" value="=">=</button>
+
+  </div>
+</div>
+
+
+
+
+                    </div>
+
+
+
+
+                  </div>
+
+       
+</section>
+
+
+
+		<!-- footer start -->
+		<footer id="footer">
+			<div class="subfooter">
+		<p class="text-center">Copyright © kadosh restuarant 2021<a target="_blank" href="#"></a></p>
+				
+			</div>
+
+		</footer>
+
+		<!-- footer end -->
+
+		<!-- JavaScript --> 
+		<script type="text/javascript">
+		const calculator = {
+  displayValue: '0',
+  firstOperand: null,
+  waitingForSecondOperand: false,
+  operator: null,
+};
+
+function inputDigit(digit) {
+  const { displayValue, waitingForSecondOperand } = calculator;
+
+  if (waitingForSecondOperand === true) {
+    calculator.displayValue = digit;
+    calculator.waitingForSecondOperand = false;
+  } else {
+    calculator.displayValue = displayValue === '0' ? digit : displayValue + digit;
+  }
+}
+
+function inputDecimal(dot) {
+  if (calculator.waitingForSecondOperand === true) {
+  	calculator.displayValue = "0."
+    calculator.waitingForSecondOperand = false;
+    return
+  }
+
+  if (!calculator.displayValue.includes(dot)) {
+    calculator.displayValue += dot;
+  }
+}
+
+function handleOperator(nextOperator) {
+  const { firstOperand, displayValue, operator } = calculator
+  const inputValue = parseFloat(displayValue);
+  
+  if (operator && calculator.waitingForSecondOperand)  {
+    calculator.operator = nextOperator;
+    return;
+  }
+
+
+  if (firstOperand == null && !isNaN(inputValue)) {
+    calculator.firstOperand = inputValue;
+  } else if (operator) {
+    const result = calculate(firstOperand, inputValue, operator);
+
+    calculator.displayValue = String(result);
+    calculator.firstOperand = result;
+  }
+
+  calculator.waitingForSecondOperand = true;
+  calculator.operator = nextOperator;
+}
+
+function calculate(firstOperand, secondOperand, operator) {
+  if (operator === '+') {
+    return firstOperand + secondOperand;
+  } else if (operator === '-') {
+    return firstOperand - secondOperand;
+  } else if (operator === '*') {
+    return firstOperand * secondOperand;
+  } else if (operator === '/') {
+    return firstOperand / secondOperand;
+  }
+
+  return secondOperand;
+}
+
+function resetCalculator() {
+  calculator.displayValue = '0';
+  calculator.firstOperand = null;
+  calculator.waitingForSecondOperand = false;
+  calculator.operator = null;
+}
+
+function updateDisplay() {
+  const display = document.querySelector('.calculator-screen');
+  display.value = calculator.displayValue;
+}
+
+updateDisplay();
+
+const keys = document.querySelector('.calculator-keys');
+keys.addEventListener('click', event => {
+  const { target } = event;
+  const { value } = target;
+  if (!target.matches('button')) {
+    return;
+  }
+
+  switch (value) {
+    case '+':
+    case '-':
+    case '*':
+    case '/':
+    case '=':
+      handleOperator(value);
+      break;
+    case '.':
+      inputDecimal(value);
+      break;
+    case 'all-clear':
+      resetCalculator();
+      break;
+    default:
+      if (Number.isInteger(parseFloat(value))) {
+        inputDigit(value);
+      }
+  }
+
+  updateDisplay();
+});	
+
+
+
+		</script>
+
+
+	</body>
+</html>
